@@ -49,7 +49,7 @@ $backoffMax = 3;
 while (true) {
 
     try {
-        $message = $sqs_client->receiveMessage(array(
+        $message = $client->receiveMessage(array(
             'QueueUrl' => $queue_url
         ));
     } catch (Exception $exc) {
@@ -82,7 +82,7 @@ while (true) {
         //Ahora eliminamos.
 
         try {
-            $sqs_client->deleteMessage(array(
+            $client->deleteMessage(array(
                 'QueueUrl' => $queue_url,
                 'ReceiptHandle' => $queue_handle
             ));
